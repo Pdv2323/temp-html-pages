@@ -32,6 +32,10 @@
         .room-image {
             max-width: 50%;
         }
+
+        .redText{
+          color: red;
+        }
     
     </style>
 </head>
@@ -80,7 +84,7 @@
         <div class="row">
             <div class="col">
                 <h1 class="mt-5">Search for availability</h1> 
-                <form action="book-now.html" method="get">
+                <form action="book-now.html" method="get" novalidate class="needs-validation">
 
                   <div class="form-group">
                     <label for="start_date">Starting Date</label>
@@ -100,6 +104,15 @@
                 </form>
             </div>
         </div>
+
+        <div class="row">
+          <div class="col">
+            <p id="myParagraph">This is some text.</p>
+            <p>
+              <button class="btn btn-outline-secondary" id="colorButton">Click me</button>
+            </p>
+          </div>
+        </div>
         
     </div>
 
@@ -114,6 +127,40 @@
             Right
         </div>
     </div>
+
+    <script>
+      console.log("This is some text printed in console.");
+
+      (() => {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+          form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+
+            form.classList.add('was-validated')
+          }, false)
+        })
+      })()
+
+      document.getElementById("colorButton").addEventListener("click",function () {
+        let myEl = document.getElementById("myParagraph");
+
+        if (myEl.classList.contains("redText")){
+          myEl.classList.remove("redText");
+        } else {
+          myEl.classList.add("redText");
+        }
+      })
+
+    </script>
 
 </body>
 </html>
